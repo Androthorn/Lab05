@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author mscre
+ *
+ */
+module Documin {
+}
