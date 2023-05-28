@@ -2,8 +2,8 @@ package documin.documento.elemento;
 
 public interface Elemento {
 
-	public String representaçãoCompleta();
+	public String representacaoCompleta();
 
-	public String representaçãoResumida();
+	public String representacaoResumida();
 
 }

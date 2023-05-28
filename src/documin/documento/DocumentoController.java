@@ -4,7 +4,7 @@ import documin.documento.elemento.Elemento;
 import java.util.HashMap;
 import java.util.Map;
 
-import documin.documento.elemento.ElementoAbstrato;
+import documin.documento.elemento.ElementoLista;
 import documin.documento.elemento.ElementoTexto;
 import documin.documento.elemento.ElementoTitulo;
 
@@ -49,13 +49,22 @@ public class DocumentoController {
 		return documento.adicionarElemento(titulo);
 	}
 
+	public boolean criarLista(String tituloDoc, String valor, int prioridade, String separador, String caractere) {
+		Documento documento = this.documentos.get(tituloDoc);
+		if (documento == null)
+			return false;
+
+		Elemento lista = new ElementoLista(prioridade, valor, separador, caractere);
+		return documento.adicionarElemento(lista);
+	}
+
 	public String pegarRepresentacaoCompleta(String tituloDoc, int elementoPosicao) throws IllegalAccessException {
 		if (!this.documentos.containsKey(tituloDoc))
 			throw new IllegalAccessException();
 
 		Documento documento = this.documentos.get(tituloDoc);
 		Elemento elemento = documento.getElementos().get(elementoPosicao);
-		return elemento.representaçãoCompleta();
+		return elemento.representacaoCompleta();
 
 	}
 
@@ -65,6 +74,6 @@ public class DocumentoController {
 
 		Documento documento = this.documentos.get(tituloDoc);
 		Elemento elemento = documento.getElementos().get(elementoPosicao);
-		return elemento.representaçãoCompleta();
+		return elemento.representacaoResumida();
 	}
 }

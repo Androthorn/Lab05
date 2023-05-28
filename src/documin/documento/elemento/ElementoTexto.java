@@ -7,12 +7,12 @@ public class ElementoTexto extends ElementoAbstrato {
 	}
 
 	@Override
-	public String representaçãoCompleta() {
+	public String representacaoCompleta() {
 		return super.getValor();
 	}
 
 	@Override
-	public String representaçãoResumida() {
+	public String representacaoResumida() {
 		return super.getValor();
 	}
 }

@@ -6,4 +6,5 @@
  *
  */
 module Documin {
+	requires org.junit.jupiter.api;
 }

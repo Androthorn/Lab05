@@ -11,7 +11,7 @@ public class Facade {
 	}
 
 	// Criação de documento
-	
+
 	public boolean criarDocumento(String titulo) {
 		return this.documentoController.criarDocumento(titulo);
 	}
@@ -29,18 +29,21 @@ public class Facade {
 	}
 
 	// Criação de elementos em um documento
-	
-	public boolean criarTexto(String tituloDoc, String valor, int prioridade)  {
-			return this.documentoController.criarTexto(tituloDoc, valor, prioridade);
+
+	public boolean criarTexto(String tituloDoc, String valor, int prioridade) {
+		return this.documentoController.criarTexto(tituloDoc, valor, prioridade);
 	}
-	
-	public boolean criarTitulo(String tituloDoc, String valor, int prioridade, int nivel, boolean
-	linkavel) {
+
+	public boolean criarTitulo(String tituloDoc, String valor, int prioridade, int nivel, boolean linkavel) {
 		return this.documentoController.criarTitulo(tituloDoc, valor, prioridade, nivel, linkavel);
 	}
-	
+
+	public boolean criarLista(String tituloDoc, String valor, int prioridade, String separador, String caractere) {
+		return this.documentoController.criarLista(tituloDoc, valor, prioridade, separador, caractere);
+	}
+
 	// Representação
-	
+
 	public String pegarRepresentacaoCompleta(String tituloDoc, int elementoPosicao) {
 		try {
 			return this.documentoController.pegarRepresentacaoCompleta(tituloDoc, elementoPosicao);
@@ -50,7 +53,7 @@ public class Facade {
 			return null;
 		}
 	}
-	
+
 	public String pegarRepresentacaoResumida(String tituloDoc, int elementoPosicao) {
 		try {
 			return this.documentoController.pegarRepresentacaoResumida(tituloDoc, elementoPosicao);

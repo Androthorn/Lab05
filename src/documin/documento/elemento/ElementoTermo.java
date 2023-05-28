@@ -7,13 +7,13 @@ public class ElementoTermo extends ElementoAbstrato {
 	}
 
 	@Override
-	public String representaçãoCompleta() {
+	public String representacaoCompleta() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String representaçãoResumida() {
+	public String representacaoResumida() {
 		// TODO Auto-generated method stub
 		return null;
 	}

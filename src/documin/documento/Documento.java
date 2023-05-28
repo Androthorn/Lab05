@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import documin.documento.elemento.Elemento;
-import documin.documento.elemento.ElementoAbstrato;
 
 public class Documento {
 	private String titulo;

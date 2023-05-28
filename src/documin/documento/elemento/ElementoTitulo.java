@@ -1,30 +1,28 @@
 package documin.documento.elemento;
 
 public class ElementoTitulo extends ElementoAbstrato {
-	private int nivel;
-	private boolean linkavel;
 
 	public ElementoTitulo(int prioridade, String valor, int nivel, boolean linkavel) {
 		super(prioridade, valor);
-		this.nivel = nivel;
-		this.linkavel = linkavel;
+		super.propriedades.put("nivel", String.valueOf(nivel));
+		super.propriedades.put("linkavel", String.valueOf(linkavel));
 	}
 
 	@Override
-	public String representaçãoCompleta() {
-		return this.representaçãoResumida() + (this.linkavel ? " -- linkavel" : "");
+	public String representacaoCompleta() {
+		String stringNivel = propriedades.get("nivel");
+		String ehlinkavel = propriedades.get("linkavel");
+		String link = stringNivel + "-" + super.getValor();
+		if (ehlinkavel.equals("true")) {
+			return representacaoResumida() + " --\n" + link.replace(" ", "").toUpperCase();
+		}
+		return stringNivel + ". " + super.getValor();
 	}
 
 	@Override
-	public String representaçãoResumida() {
-		return Integer.toString(this.nivel) + ". " + super.getValor();
+	public String representacaoResumida() {
+		String stringNivel = propriedades.get("nivel");
+		return stringNivel + ". " + super.getValor();
 	}
 
-	public int getNivel() {
-		return nivel;
-	}
-
-	public boolean isLinkavel() {
-		return linkavel;
-	}
 }
