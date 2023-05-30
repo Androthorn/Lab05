@@ -1,9 +1,13 @@
 package documin.documento.elemento;
 
+import java.util.Arrays;
+
 public class ElementoTermo extends ElementoAbstrato {
 
-	public ElementoTermo(int prioridade, String valor) {
+	public ElementoTermo(int prioridade, String valor, String separador, String ordem) {
 		super(prioridade, valor);
+		super.propriedades.put("separador", String.valueOf(separador));
+		super.propriedades.put("ordem", String.valueOf(ordem));
 	}
 
 	@Override
@@ -18,4 +22,8 @@ public class ElementoTermo extends ElementoAbstrato {
 		return null;
 	}
 
+	public void ordenaAlfabeticamente(String[] lista) {
+		Arrays.sort(lista);
+	}
+	
 }

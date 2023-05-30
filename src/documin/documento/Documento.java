@@ -27,8 +27,25 @@ public class Documento {
 	public int getTamanhoMaximo() {
 		return tamanhoMaximo;
 	}
+	
+	public String[] exibirDocumento() {
+		int tamanho = elementos.size();
+		String[] array = new String[tamanho];
+		
+		for(int i = 0; i < array.length; i++) {
+			array[i] = elementos.get(i).representacaoResumida();
+		}
+		return array;
+	}
+
+	public boolean temEspaco() {
+		return tamanhoMaximo == 0 || elementos.size() < tamanhoMaximo;
+	}
 
 	public boolean adicionarElemento(Elemento elemento) {
-		return this.elementos.add(elemento);
+		if (temEspaco()) {
+			return this.elementos.add(elemento);
+		}
+		return false;
 	}
 }

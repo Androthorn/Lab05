@@ -1,5 +1,7 @@
 package documin.documento.elemento;
 
+import java.util.regex.Pattern;
+
 public class ElementoLista extends ElementoAbstrato {
 
 	public ElementoLista(int prioridade, String valor, String separador, String caractere) {
@@ -11,9 +13,7 @@ public class ElementoLista extends ElementoAbstrato {
 	@Override
 	public String representacaoCompleta() {
 		String separador = propriedades.get("separador");
-		if (separador == "|") {
-			separador = "\\|";
-		}
+		separador = Pattern.quote(separador);
 		String caractere = propriedades.get("caractere");
 		String[] lista = this.getValor().split(separador);
 		String saida = "";
@@ -26,9 +26,7 @@ public class ElementoLista extends ElementoAbstrato {
 	@Override
 	public String representacaoResumida() {
 		String separador = propriedades.get("separador");
-		if (separador == "|") {
-			separador = "\\|";
-		}
+		separador = Pattern.quote(separador);
 		String[] lista = this.getValor().split(separador);
 		String saida = "";
 		for (String frase : lista) {

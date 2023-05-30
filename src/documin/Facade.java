@@ -1,5 +1,6 @@
 package documin;
 
+import documin.documento.Documento;
 import documin.documento.DocumentoController;
 
 public class Facade {
@@ -25,7 +26,11 @@ public class Facade {
 	}
 
 	public int contarElementos(String titulo) {
-		return 0;
+		return this.documentoController.contarElementos(titulo);
+	}
+	
+	public String[] exibirDocumento(String titulo) {
+		return this.documentoController.exibirDocumento(titulo);
 	}
 
 	// Criação de elementos em um documento

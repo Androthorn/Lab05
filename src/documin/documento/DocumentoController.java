@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import documin.documento.elemento.ElementoLista;
+import documin.documento.elemento.ElementoTermo;
 import documin.documento.elemento.ElementoTexto;
 import documin.documento.elemento.ElementoTitulo;
 
@@ -16,19 +17,38 @@ public class DocumentoController {
 	}
 
 	public boolean criarDocumento(String titulo) {
+		if (this.documentos.containsKey(titulo))
+			return false;
+		if (titulo.isBlank())
+			throw new IllegalArgumentException();
+
 		return this.criarDocumento(titulo, 0);
 	}
+	
 
 	public boolean criarDocumento(String titulo, int tamanhoMaximo) {
 		if (this.documentos.containsKey(titulo))
 			return false;
-
+		if (titulo.isBlank())
+			throw new IllegalArgumentException();
+		if (tamanhoMaximo < 0)
+			throw new IllegalArgumentException();
 		this.documentos.put(titulo, new Documento(titulo, tamanhoMaximo));
 		return true;
 	}
 
+	public int contarElementos(String titulo) {
+		Documento documento = documentos.get(titulo);
+		return documento.getElementos().size();
+	}
+	
 	public void removerDocumento(String titulo) {
 		this.documentos.remove(titulo);
+	}
+	
+	public String[] exibirDocumento(String titulo) {
+		Documento doc = documentos.get(titulo);
+		return doc.exibirDocumento();
 	}
 
 	public boolean criarTexto(String tituloDoc, String valor, int prioridade) {
@@ -55,6 +75,15 @@ public class DocumentoController {
 			return false;
 
 		Elemento lista = new ElementoLista(prioridade, valor, separador, caractere);
+		return documento.adicionarElemento(lista);
+	}
+
+	public boolean criarTermos(String tituloDoc, String valor, int prioridade, String separador, String ordem) {
+		Documento documento = this.documentos.get(tituloDoc);
+		if (documento == null)
+			return false;
+
+		Elemento lista = new ElementoTermo(prioridade, valor, separador, ordem);
 		return documento.adicionarElemento(lista);
 	}
 

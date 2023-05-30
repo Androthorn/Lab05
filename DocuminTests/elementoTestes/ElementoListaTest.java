@@ -1,4 +1,4 @@
-package Testes;
+package elementoTestes;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,7 +11,7 @@ class ElementoListaTest {
 	Facade facade = new Facade();
 
 	@BeforeEach
-	public void elementoTitulobase() {
+	public void elementoTituloBase() {
 		facade.criarDocumento("Deldel");
 		facade.criarLista("Deldel", "Exemplo | de uma lista | de 3 termos", 0, "|", "-");
 	}
@@ -23,8 +23,8 @@ class ElementoListaTest {
 
 	@Test
 	void representacaoResumidaTest() {
-		facade.criarLista("Deldel", "Exemplo @ de uma lista @ de 3 termos", 1, "@", "-");
-		assertEquals("Exemplo@ de uma lista@ de 3 termos@", facade.pegarRepresentacaoResumida("Deldel", 1));
+		facade.criarLista("Deldel", "Exemplo | de uma lista | de 3 termos", 1, "|", "-");
+		assertEquals("Exemplo| de uma lista| de 3 termos", facade.pegarRepresentacaoResumida("Deldel", 1));
 	}
 
 }
