@@ -26,5 +26,16 @@ class ElementoListaTest {
 		facade.criarLista("Deldel", "Exemplo | de uma lista | de 3 termos", 1, "|", "-");
 		assertEquals("Exemplo| de uma lista| de 3 termos", facade.pegarRepresentacaoResumida("Deldel", 1));
 	}
-
+	
+	@Test
+	void representacaoCompletaTestCaractereArroba() {
+		facade.criarLista("Deldel", "Exemplo @ de uma lista @ de 3 termos", 1, "@", "-");
+		assertEquals("- Exemplo\n- de uma lista\n- de 3 termos\n", facade.pegarRepresentacaoCompleta("Deldel", 1));
+	}
+	
+	@Test
+	void representacaoResumidaTestCaractereArroba() {
+		facade.criarLista("Deldel", "Exemplo @ de uma lista @ de 3 termos", 1, "@", "-");
+		assertEquals("Exemplo@ de uma lista@ de 3 termos", facade.pegarRepresentacaoResumida("Deldel", 1));
+	}
 }

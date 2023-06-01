@@ -3,7 +3,7 @@ package documin.documento.elemento;
 import java.util.Map;
 import java.util.HashMap;
 
-public abstract class ElementoAbstrato implements Elemento {
+public abstract class ElementoAbstrato implements ElementoI {
 	private int prioridade;
 	private String valor;
 	protected Map<String, String> propriedades;

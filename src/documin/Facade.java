@@ -1,6 +1,5 @@
 package documin;
 
-import documin.documento.Documento;
 import documin.documento.DocumentoController;
 
 public class Facade {
@@ -67,6 +66,10 @@ public class Facade {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public DocumentoController getDocumentoController() {
+		return documentoController;
 	}
 
 }

@@ -1,13 +1,8 @@
 package documin.documento;
 
-import documin.documento.elemento.Elemento;
 import java.util.HashMap;
 import java.util.Map;
 
-import documin.documento.elemento.ElementoLista;
-import documin.documento.elemento.ElementoTermo;
-import documin.documento.elemento.ElementoTexto;
-import documin.documento.elemento.ElementoTitulo;
 
 public class DocumentoController {
 	public Map<String, Documento> documentos;
@@ -24,7 +19,6 @@ public class DocumentoController {
 
 		return this.criarDocumento(titulo, 0);
 	}
-	
 
 	public boolean criarDocumento(String titulo, int tamanhoMaximo) {
 		if (this.documentos.containsKey(titulo))
@@ -41,11 +35,11 @@ public class DocumentoController {
 		Documento documento = documentos.get(titulo);
 		return documento.getElementos().size();
 	}
-	
+
 	public void removerDocumento(String titulo) {
 		this.documentos.remove(titulo);
 	}
-	
+
 	public String[] exibirDocumento(String titulo) {
 		Documento doc = documentos.get(titulo);
 		return doc.exibirDocumento();
@@ -56,8 +50,7 @@ public class DocumentoController {
 		if (documento == null)
 			return false;
 
-		Elemento texto = new ElementoTexto(prioridade, valor);
-		return documento.adicionarElemento(texto);
+		return documento.criarTexto(tituloDoc, valor, prioridade);
 	}
 
 	public boolean criarTitulo(String tituloDoc, String valor, int prioridade, int nivel, boolean linkavel) {
@@ -65,8 +58,7 @@ public class DocumentoController {
 		if (documento == null)
 			return false;
 
-		Elemento titulo = new ElementoTitulo(prioridade, valor, nivel, linkavel);
-		return documento.adicionarElemento(titulo);
+		return documento.criarTitulo(tituloDoc, valor, prioridade, nivel, linkavel);
 	}
 
 	public boolean criarLista(String tituloDoc, String valor, int prioridade, String separador, String caractere) {
@@ -74,8 +66,7 @@ public class DocumentoController {
 		if (documento == null)
 			return false;
 
-		Elemento lista = new ElementoLista(prioridade, valor, separador, caractere);
-		return documento.adicionarElemento(lista);
+		return documento.criarLista(tituloDoc, valor, prioridade, separador, caractere);
 	}
 
 	public boolean criarTermos(String tituloDoc, String valor, int prioridade, String separador, String ordem) {
@@ -83,8 +74,7 @@ public class DocumentoController {
 		if (documento == null)
 			return false;
 
-		Elemento lista = new ElementoTermo(prioridade, valor, separador, ordem);
-		return documento.adicionarElemento(lista);
+		return documento.criarTermos(tituloDoc, valor, prioridade, separador, ordem);
 	}
 
 	public String pegarRepresentacaoCompleta(String tituloDoc, int elementoPosicao) throws IllegalAccessException {
@@ -92,8 +82,7 @@ public class DocumentoController {
 			throw new IllegalAccessException();
 
 		Documento documento = this.documentos.get(tituloDoc);
-		Elemento elemento = documento.getElementos().get(elementoPosicao);
-		return elemento.representacaoCompleta();
+		return documento.pegaRepresentacaoCompletaDoElemento(elementoPosicao);
 
 	}
 
@@ -102,7 +91,6 @@ public class DocumentoController {
 			throw new IllegalAccessException();
 
 		Documento documento = this.documentos.get(tituloDoc);
-		Elemento elemento = documento.getElementos().get(elementoPosicao);
-		return elemento.representacaoResumida();
+		return documento.pegaRepresentacaoResumidaDoElemento(elementoPosicao);
 	}
 }

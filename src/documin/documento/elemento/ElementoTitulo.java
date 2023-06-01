@@ -9,18 +9,18 @@ public class ElementoTitulo extends ElementoAbstrato {
 	}
 
 	@Override
-	public String representacaoCompleta() {
+	public String pegarRepresentacaoCompleta() {
 		String stringNivel = propriedades.get("nivel");
 		String ehlinkavel = propriedades.get("linkavel");
 		String link = stringNivel + "-" + super.getValor();
 		if (ehlinkavel.equals("true")) {
-			return representacaoResumida() + " --\n" + link.replace(" ", "").toUpperCase();
+			return pegarRepresentacaoResumida() + " --\n" + link.replace(" ", "").toUpperCase();
 		}
 		return stringNivel + ". " + super.getValor();
 	}
 
 	@Override
-	public String representacaoResumida() {
+	public String pegarRepresentacaoResumida() {
 		String stringNivel = propriedades.get("nivel");
 		return stringNivel + ". " + super.getValor();
 	}

@@ -11,28 +11,29 @@ public class ElementoLista extends ElementoAbstrato {
 	}
 
 	@Override
-	public String representacaoCompleta() {
+	public String pegarRepresentacaoCompleta() {
 		String separador = propriedades.get("separador");
-		separador = Pattern.quote(separador);
 		String caractere = propriedades.get("caractere");
-		String[] lista = this.getValor().split(separador);
-		String saida = "";
+		String[] lista = this.getValor().split(Pattern.quote(separador));
+		StringBuilder saida = new StringBuilder();
 		for (String frase : lista) {
-			saida += caractere + " " + frase.strip() + "\n";
+			saida.append(caractere).append(" ").append(frase.strip()).append("\n");
 		}
-		return saida;
+		return saida.toString();
 	}
 
 	@Override
-	public String representacaoResumida() {
+	public String pegarRepresentacaoResumida() {
 		String separador = propriedades.get("separador");
-		separador = Pattern.quote(separador);
-		String[] lista = this.getValor().split(separador);
-		String saida = "";
-		for (String frase : lista) {
-			saida += frase.stripTrailing() + separador;
+		String[] lista = this.getValor().split(Pattern.quote(separador));
+		StringBuilder saida = new StringBuilder();
+		for (int i = 0; i < lista.length; i++) {
+			String frase = lista[i].stripTrailing();
+			saida.append(frase);
+			if (i < lista.length - 1) {
+				saida.append(separador);
+			}
 		}
-		return saida;
+		return saida.toString();
 	}
-
 }

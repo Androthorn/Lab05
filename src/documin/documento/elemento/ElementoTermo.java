@@ -11,13 +11,13 @@ public class ElementoTermo extends ElementoAbstrato {
 	}
 
 	@Override
-	public String representacaoCompleta() {
+	public String pegarRepresentacaoCompleta() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String representacaoResumida() {
+	public String pegarRepresentacaoResumida() {
 		// TODO Auto-generated method stub
 		return null;
 	}

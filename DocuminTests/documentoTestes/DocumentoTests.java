@@ -18,6 +18,8 @@ class DocumentoTests {
 		facade.criarDocumento("Deldel");
 		facade.criarLista("Deldel", "Caramba | testei!", 0, "|", "-");
 		facade.criarTexto("Deldel", "olá testando", 1);
+		facade.criarDocumento("teste2", 1);
+		facade.criarTexto("teste2", "fala, corno", 0);
 	}
 	
 	@Test
@@ -25,14 +27,21 @@ class DocumentoTests {
 		String[] array = facade.exibirDocumento("Deldel");
 		String saida = "";
 		for (String string : array) {
-			saida += string;
+			saida += string + " ";
 		}
-		assertEquals("caralho", saida);
+		assertEquals("Caramba| testei! olá testando ", saida);
 	}
 
 	@Test
 	void testTemEspaco() {
-		fail("Not yet implemented");
+		Documento doc = facade.getDocumentoController().documentos.get("Deldel");
+		assertTrue(doc.temEspaco());
+	}
+	
+	@Test
+	void testNaoTemEspaco() {
+		Documento doc = facade.getDocumentoController().documentos.get("teste2");
+		assertFalse(doc.temEspaco());
 	}
 
 	@Test
